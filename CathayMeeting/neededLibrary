@@ -1,0 +1,6 @@
+v1.8.1
+
+SystemConfiguration.framework
+MobileCoreServices.framework
+CFNetwork.framework
+libz.1.2.3.dylib

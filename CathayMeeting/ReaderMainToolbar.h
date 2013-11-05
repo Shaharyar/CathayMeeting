@@ -1,0 +1,63 @@
+//
+//	ReaderMainToolbar.h
+//	Reader v2.5.0
+//
+//	Created by Julius Oklamcak on 2011-07-01.
+//	Copyright © 2011 Julius Oklamcak. All rights reserved.
+//
+//	This work is being made available under a Creative Commons Attribution license:
+//		«http://creativecommons.org/licenses/by/3.0/»
+//	You are free to use this work and any derivatives of this work in personal and/or
+//	commercial products and projects as long as the above copyright is maintained and
+//	the original author is attributed.
+//
+
+//----------------------------
+//  2011/11/24
+//  Yu Jen Wang
+//  調整Done名稱為返回，顯示標題列改為title
+//----------------------------
+
+#import <UIKit/UIKit.h>
+
+#import "UIXToolbarView.h"
+
+@class ReaderMainToolbar;
+@class ReaderDocument;
+
+@protocol ReaderMainToolbarDelegate <NSObject>
+
+@required // Delegate protocols
+
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar editButton:(UIButton *)button; 
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar calculatorButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar noteButton:(UIButton *)button;
+
+@end
+
+@interface ReaderMainToolbar : UIXToolbarView
+{
+@private // Instance variables
+
+	UIButton *markButton;
+
+	UIImage *markImageN;
+	UIImage *markImageY;
+}
+
+@property (nonatomic, assign, readwrite) id <ReaderMainToolbarDelegate> delegate;
+
+- (id)initWithFrame:(CGRect)frame document:(ReaderDocument *)object;
+
+- (void)setBookmarkState:(BOOL)state;
+
+- (void)hideToolbar;
+- (void)showToolbar;
+
+@end
